@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/GMS.dir/src/main.cpp.o CMakeFiles/GMS.dir/src/gms_matcher.cpp.o  -o GMS  -L/usr/local/lib  -L/usr/local/cuda/lib64 -rdynamic -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -lopencv_videoio -lopencv_xfeatures2d -lopencv_features2d -lopencv_xobjdetect -lopencv_objdetect -lopencv_flann -Wl,-rpath,/usr/local/lib:/usr/local/cuda/lib64 
