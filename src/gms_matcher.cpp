@@ -357,9 +357,15 @@ vector<DMatch> matchImage(Mat& image1, Mat& image2, vector<KeyPoint>& kp1, vecto
 	orb->detectAndCompute(image1, Mat(), kp1, d1);
 	orb->detectAndCompute(image2, Mat(), kp2, d2);
 
-	BFMatcher matcher(NORM_HAMMING);
 
+#ifdef USE_GPU
+	GpuMat gd1(d1), gd2(d2);
+	Ptr<cuda::DescriptorMatcher> matcher = cv::cuda::DescriptorMatcher::createBFMatcher(NORM_HAMMING);
+	matcher->match(gd1, gd2, matches_all);
+#else
+	BFMatcher matcher(NORM_HAMMING);
 	matcher.match(d1, d2, matches_all);
+#endif
 
 	// GMS filter
 	int num_inliers = 0;
